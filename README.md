@@ -107,3 +107,10 @@ cd backend
 # Configure your database settings
 # Start with: npm start
 ```
+
+
+
+
+My Thoughts and Learnings
+
+I prioritized making the app user-friendly by focusing on error messages, loading indicators, and input validation. I really understood many small things including the mistakes we make, I got even better in the frontend frameworks. Overall i learnt many things and mainly the time management that is we have to finish it in 2-3 days so how we can manage the time, i got experienced in that
