@@ -9,21 +9,14 @@ const dbModule = require('./config/database');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Global error handlers to surface unexpected issues
 process.on('unhandledRejection', (reason, promise) => {
     console.error('Unhandled Rejection at:', promise, 'reason:', reason);
-    // don't exit; log and continue for debugging in dev
 });
 
 process.on('uncaughtException', (err) => {
     console.error('Uncaught Exception:', err);
-    // don't exit in development; inspect logs
 });
 
-// Middleware
-// In development allow the frontend to run on a different port. If FRONTEND_URL
-// is set, use it; otherwise allow the request origin (true) so dev servers on
-// different ports (3000, 3001, etc.) will be accepted.
 app.use(cors({
     origin: process.env.FRONTEND_URL || true,
     credentials: true
@@ -34,12 +27,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Routes
 app.use('/api/campaigns', campaignRoutes);
 
-// Health check route
 app.get('/health', (req, res) => {
     res.json({ status: 'OK', message: 'Campaign Tracker API is running' });
 });
 
-// Error handling middleware
+app.get('/api/health', (req, res) => {
+    res.json({ status: 'OK', message: 'Campaign Tracker API is running' });
+});
+
 app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).json({
@@ -49,11 +44,6 @@ app.use((err, req, res, next) => {
     });
 });
 
-// 404 handler
-// Use app.all for a catch-all route instead of app.use with '*' which
-// can trigger path-to-regexp errors with some express/path-to-regexp versions.
-// Use app.use with no path to create a catch-all 404 handler without
-// supplying a route string (avoids path-to-regexp parsing issues).
 app.use((req, res) => {
     res.status(404).json({
         success: false,
@@ -63,18 +53,25 @@ app.use((req, res) => {
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
-    // Test DB connectivity on startup to provide a clearer message if MySQL is down
-    // non-blocking DB connectivity check (don't await so errors don't affect startup)
+    // Decide whether to perform a DB connectivity check on startup.
+    // If `USE_IN_MEMORY=true` or we're in a non-production environment, skip the check
+    // because the app will use the in-memory fallback. This avoids noisy ECONNREFUSED
+    // logs when developers intentionally don't run MySQL locally.
     const pool = dbModule.pool;
-    pool.execute('SELECT 1')
-        .then(() => console.log('Database connection successful'))
-        .catch((err) => {
-            console.error('Database connection failed on startup:', err && err.code ? { code: err.code, message: err.message } : err);
-            console.error('If you do not have a local MySQL server running, either start it or update .env DB_* variables to point to a running instance. For development, the API will fall back to an empty dataset for read operations.');
-        });
+    const useInMemory = (process.env.USE_IN_MEMORY === 'true') || (process.env.NODE_ENV !== 'production');
 
-    // Keep the process alive even if certain environments would allow it to exit
-    // (this prevents unexpected termination in some constrained shells).
+    if (useInMemory) {
+        console.log('Running with in-memory fallback (USE_IN_MEMORY=true or non-production). Skipping DB connectivity check.');
+        console.log('To enable a real database, start MySQL and set DB_* variables in backend/.env or set USE_IN_MEMORY=false');
+    } else {
+        pool.execute('SELECT 1')
+            .then(() => console.log('Database connection successful'))
+            .catch((err) => {
+                console.error('Database connection failed on startup:', err && err.code ? { code: err.code, message: err.message } : err);
+                console.error('If you do not have a local MySQL server running, either start it or update .env DB_* variables to point to a running instance. For development, the API will fall back to an empty dataset for read operations.');
+            });
+    }
+
     setInterval(() => {
         /* noop to keep event loop busy */
     }, 1e7);

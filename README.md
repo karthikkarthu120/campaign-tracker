@@ -1,30 +1,109 @@
 # Campaign Tracker
 
-This is a small full-stack app (React frontend, Node/Express backend, MySQL optional) that demonstrates adding, listing, updating, and deleting marketing campaigns.
+## 🚀 Features
 
-Quick start (development):
+- **User Authentication**: Secure login and registration system with client-side validation
+- **Campaign Management**: Create, edit, and track marketing campaigns
+- **Real-time Search**: Filter campaigns by name or client
+- **Status Management**: Update campaign status (Active, Paused, Completed)
+- **Responsive Design**: Works seamlessly on desktop, tablet, and mobile devices
+- **Modern UI**: Clean, professional interface with smooth animations
+- **Data Persistence**: localStorage for user sessions, MySQL/in-memory fallback for campaigns
 
-1. Backend
-   - cd backend
-   - npm install
-   - create a `.env` file (see `backend/.env.example`) or set `USE_IN_MEMORY=true` to run without MySQL
-   - node server.js
+## 🛠️ Tech Stack
 
-2. Frontend
-   - cd frontend
-   - npm install
-   - npm start
+### Frontend
+- **React 19.2.0** - Modern UI library
+- **Axios** - HTTP client for API calls
+- **CSS3** - Custom styling with CSS variables
+- **HTML5** - Semantic markup
 
-Notes
-- The backend will perform a DB connectivity check on startup. If MySQL is not available and `USE_IN_MEMORY` is set to `true` (or you are in non-production), the API falls back to an in-memory store so you can still test the UI.
-- To use a real DB, start MySQL and import `db.sql` then update `.env`.
+### Backend
+- **Node.js** - JavaScript runtime
+- **Express.js** - Web application framework
+- **MySQL** - Primary database (with in-memory fallback)
+- **CORS** - Cross-origin resource sharing
+- **dotenv** - Environment variable management
 
-Assignment checklist (covered):
-- Add a new marketing campaign: implemented
-- View list of campaigns: implemented
-- Update campaign status: implemented
-- Delete campaign: implemented
-- Simple dashboard: implemented (counts)
-- Search/filter: implemented
+### Start the Application
 
-*** End of README
+**Terminal 1 - Backend:**
+```bash
+cd backend
+npm start
+```
+
+**Terminal 2 - Frontend:**
+```bash
+cd frontend
+npm start
+```
+
+The application will be available at:
+- **Frontend**: http://localhost:3000
+- **Backend API**: http://localhost:5000
+
+## 📂 Project Structure
+
+```
+campaign-tracker/
+├── backend/
+│   ├── config/
+│   │   └── database.js          # Database configuration
+│   ├── models/
+│   │   └── Campaign.js          # Campaign data model
+│   ├── routes/
+│   │   └── campaigns.js         # Campaign API routes
+│   ├── .env                     # Environment variables
+│   ├── package.json
+│   └── server.js                # Express server
+├── frontend/
+│   ├── public/
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── CampaignForm.js  # Campaign creation form
+│   │   │   ├── CampaignList.js  # Campaign display list
+│   │   │   ├── HomePage.js      # Landing page
+│   │   │   └── Login.js         # Authentication
+│   │   ├── services/
+│   │   │   └── campaignService.js # API service layer
+│   │   ├── App.js               # Main application component
+│   │   ├── App.css              # Global styles
+│   │   └── neon-theme.css       # Theme variables
+│   └── package.json
+└── README.md
+```
+
+## 🧪 Development
+
+### Frontend Development
+```bash
+cd frontend
+npm start        # Start development server
+npm run build    # Build for production
+npm test         # Run tests
+```
+
+### Backend Development
+```bash
+cd backend
+npm start        # Start server with nodemon
+npm run dev      # Development mode with auto-restart
+```
+
+## 🚀 Production Deployment
+
+### Frontend
+```bash
+cd frontend
+npm run build
+# Deploy the 'build' folder to your web server
+```
+
+### Backend
+```bash
+cd backend
+# Set NODE_ENV=production in your environment
+# Configure your database settings
+# Start with: npm start
+```

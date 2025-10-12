@@ -1,0 +1,177 @@
+:root {
+    --bg: #1a1f2e;
+    --bg-deco: none;
+    --panel: #252b3d;
+
+    --card: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+
+    --accent-primary: #10b981;
+    --accent-secondary: #14b8a6;
+    --accent-tertiary: #8b5cf6;
+    --accent-gradient: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+
+    --warning-color: #f59e0b;
+    --success-color: #059669;
+    --error-color: #ef4444;
+
+    --glow-primary: rgba(16,185,129,0.15);
+    --glow-secondary: rgba(20,184,166,0.12);
+
+    --text-light: #f8fafc;
+    --text-primary: #e2e8f0;
+    --muted-on-dark: rgba(226,232,240,0.75);
+    --glass: rgba(255,255,255,0.02);
+}
+
+.neon-bg{
+    background: var(--bg);
+    min-height: 100vh;
+    color: var(--text-primary);
+}
+
+.neon-pill{
+  padding:10px 18px;
+  border-radius:999px;
+  background: var(--accent-gradient);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+  color: #fff;
+  font-weight:700;
+}
+
+.neon-hero{
+    margin:24px 0;
+    padding:28px;
+    border-radius:14px;
+    background: var(--panel);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.45);
+    border: 1px solid rgba(255,255,255,0.03);
+}
+
+.neon-hero h1 { 
+  font-size: 1.2rem; 
+  margin-bottom: 6px; 
+  color: var(--text-primary); 
+}
+
+.neon-hero p { 
+  color: var(--muted-on-dark); 
+  margin-bottom: 0; 
+}
+
+/* Large headline with gradient fill and glow */
+.headline-large{
+    font-size:72px;
+    line-height:0.9;
+    font-weight:900;
+    text-transform:uppercase;
+    margin:8px 0 18px 0;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+}
+
+/* CTA buttons */
+.btn-neon{
+    padding:10px 18px;
+    border-radius:999px;
+    border:none;
+    color:#fff;
+    font-weight:800;
+    background: var(--accent-gradient);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.35);
+}
+
+.btn-outline-neon{
+    padding:8px 14px;
+    border-radius:999px;
+    background:transparent;
+    color:var(--accent-primary);
+    border:1px solid rgba(14,165,255,0.12);
+}
+
+/* Cards */
+.neon-card{
+  background: var(--panel);
+  border-radius:12px;
+  padding:18px;
+  border: 1px solid rgba(255,255,255,0.03);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.45);
+  color: var(--text-primary);
+}
+
+/* Hero layout */
+.hero-wrap { 
+  display: flex; 
+  gap: 24px; 
+  align-items: stretch; 
+  position: relative; 
+}
+
+.hero-left { 
+  flex: 1 1 55%; 
+  padding: 36px 28px; 
+}
+
+.hero-right { 
+  flex: 1 1 45%; 
+  padding: 36px 28px; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+}
+
+.headline-sub { 
+  font-size: 20px; 
+  color: var(--muted-on-dark); 
+  margin-bottom: 18px; 
+}
+
+.cta-row { 
+  display: flex; 
+  gap: 16px; 
+  align-items: center; 
+  margin-top: 18px; 
+}
+
+/* Vertical social buttons */
+.social-vertical { 
+  position: absolute; 
+  left: 8px; 
+  top: 120px; 
+  display: flex; 
+  flex-direction: column; 
+  gap: 16px; 
+}
+
+.social-vertical button { 
+  color: var(--accent-primary); 
+  font-size: 16px; 
+  background: var(--panel); 
+  border: 1px solid var(--accent-primary); 
+  border-radius: 999px; 
+  width: 40px; 
+  height: 40px; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+}
+
+/* responsive adjustments */
+@media (max-width: 900px) {
+  .headline-large { 
+    font-size: 36px; 
+  }
+  
+  .hero-wrap { 
+    flex-direction: column; 
+  }
+  
+  .social-vertical { 
+    position: static; 
+    flex-direction: row; 
+    margin-bottom: 12px; 
+  }
+}

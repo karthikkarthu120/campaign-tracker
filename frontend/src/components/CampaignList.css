@@ -1,62 +1,109 @@
 /* Campaign list styles */
 .campaign-list {
-    padding: 20px;
+  padding: 20px;
+  color: var(--text-primary);
 }
 
 .campaign-list h2 {
-    margin-bottom: 16px;
-    color: #2c3e50;
+  margin-bottom: 16px;
+  color: var(--text-primary);
 }
 
 .table-container {
-    overflow-x: auto;
+  overflow-x: auto;
 }
 
 .campaigns-table {
-    width: 100%;
-    border-collapse: collapse;
-    background: #fff;
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--panel);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
 }
 
 .campaigns-table th,
 .campaigns-table td {
-    padding: 12px 14px;
-    text-align: left;
-    border-bottom: 1px solid #f0f2f5;
+  padding: 12px 14px;
+  text-align: left;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+  color: var(--text-primary);
 }
 
 .campaigns-table thead th {
-    background: #fafbfc;
-    color: #6b7280;
-    font-size: 13px;
-    font-weight: 600;
+  background: rgba(255,255,255,0.02);
+  color: var(--muted-on-dark);
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
 }
 
-tbody tr:nth-child(even) {
-    background: #fbfcfd;
+.campaigns-table tbody tr:nth-child(even) {
+  background: rgba(255,255,255,0.01);
+}
+
+.campaigns-table tbody tr:hover {
+  background: rgba(255,255,255,0.02);
 }
 
 .campaign-name {
-    font-weight: 600;
-    color: #2c3e50;
+  font-weight: 600;
+  color: var(--accent-primary);
 }
 
 .actions {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .status-select {
-    padding: 6px 8px;
-    border-radius: 6px;
-    border: 1px solid #ddd;
+  padding: 6px 8px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: var(--card);
+  color: var(--text-primary);
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.status-select option {
+  background: var(--panel);
+  color: var(--text-primary);
+  padding: 8px;
+}
+
+.status-select:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 2px rgba(16,185,129,0.2);
+}
+
+.btn-delete {
+  background: var(--error-color);
+  color: white;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.btn-delete:hover {
+  background: var(--error-color);
+  opacity: 0.8;
 }
 
 @media (max-width: 768px) {
-    .campaigns-table th,
-    .campaigns-table td {
-        padding: 10px 8px;
-        font-size: 13px;
-    }
+  .campaigns-table th,
+  .campaigns-table td {
+    padding: 10px 8px;
+    font-size: 13px;
+  }
+  
+  .actions {
+    flex-direction: column;
+    gap: 4px;
+  }
 }

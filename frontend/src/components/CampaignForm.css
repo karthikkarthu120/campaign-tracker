@@ -7,16 +7,17 @@
 .campaign-form {
     max-width: 600px;
     width: 100%;
-    background: #ffffff;
-    border-radius: 10px;
+    background: var(--panel);
+    border-radius: 14px;
     padding: 22px;
-    box-shadow: 0 6px 18px rgba(23, 33, 69, 0.06);
-    border: 1px solid #eef2f5;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+    border: 1px solid rgba(255,255,255,0.03);
+    color: var(--text-primary);
 }
 
 .campaign-form h2 {
     margin-bottom: 18px;
-    color: #2c3e50;
+    color: var(--text-primary);
     text-align: left;
 }
 
@@ -28,32 +29,40 @@
     display: block;
     margin-bottom: 8px;
     font-weight: 600;
-    color: #3b4a5a;
+    color: var(--muted-on-dark);
 }
 
 .form-group input,
 .form-group select {
     width: 100%;
     padding: 10px 12px;
-    border: 1px solid #e6e9ee;
-    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 10px;
     font-size: 14px;
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    background: var(--card);
+    color: var(--text-primary);
+}
+
+.form-group select option {
+    background: var(--panel);
+    color: var(--text-primary);
+    padding: 8px 12px;
 }
 
 .form-group input:focus,
 .form-group select:focus {
     outline: none;
-    border-color: #9fd3ff;
-    box-shadow: 0 6px 20px rgba(52,152,219,0.08);
+    border-color: var(--accent-primary);
+    box-shadow: 0 2px 8px var(--glow-primary);
 }
 
 .form-group input.error {
-    border-color: #e74c3c;
+    border-color: var(--error-color);
 }
 
 .error-message {
-    color: #e74c3c;
+    color: var(--error-color);
     font-size: 12px;
     margin-top: 6px;
     display: block;
@@ -64,6 +73,19 @@
     justify-content: flex-end;
     gap: 12px;
     margin-top: 20px;
+}
+
+.btn-cancel {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.06);
+    color: var(--muted-on-dark);
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.btn-cancel:hover {
+    background: rgba(255,255,255,0.02);
 }
 
 @media (max-width: 768px) {

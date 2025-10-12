@@ -19,7 +19,6 @@ const CampaignForm = ({ onCampaignCreated, onCancel, isLoading }) => {
             [name]: value
         }));
         
-        // Clear error when user starts typing
         if (errors[name]) {
             setErrors(prev => ({
                 ...prev,
@@ -28,7 +27,6 @@ const CampaignForm = ({ onCampaignCreated, onCancel, isLoading }) => {
         }
     };
 
-    // Validate form data
     const validateForm = () => {
         const newErrors = {};
         
