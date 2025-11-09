@@ -39,6 +39,11 @@ cd frontend
 npm start
 ```
 
+Database Setup(Note)
+
+In Xaamp Connect to admin and import sql file from the folder 
+then open the website 
+
 The application will be available at:
 - **Frontend**: http://localhost:3000
 - **Backend API**: http://localhost:5000
